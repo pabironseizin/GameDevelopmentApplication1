@@ -11,7 +11,6 @@ protected:
 	double radian;  //Œü‚«
 	int image;  //•`‰æ‚·‚é‰æ‘œ
 	int sound;  //Ä¶‚·‚é‰¹Šy
-	int BackGround_image;  //”wŒi‰æ‘œ
 
 public:
 	GameObject();
@@ -29,5 +28,8 @@ public:
 	Vector2D GetLocation() const;
 	//ˆÊ’uî•ñ•ÏXˆ—
 	void SetLocation(const Vector2D& location);
+
+	
 };
+
 

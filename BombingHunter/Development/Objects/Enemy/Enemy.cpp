@@ -1,31 +1,30 @@
-#include "Player.h"
-#include "../../Utility/InputControl.h"
+#include "Enemy.h"
 #include "DxLib.h"
 
 //コントラクタ
-Player::Player() : animation_count(0), filp_flag(FALSE)
+Enemy::Enemy() : animation_count(0), filp_flag(FALSE)
 {
 	animation[0] = NULL;
 	animation[1] = NULL;
 }
 
 //デストラクタ
-Player::~Player()
+Enemy::~Enemy()
 {
 
 }
 
 //初期化処理
-void Player::Initialize()
+void Enemy::Initialize()
 {
 	//画像の読み込み
-	animation[0] = LoadGraph("Resource/Images/Tri-pilot/1.png");
-	animation[1] = LoadGraph("Resource/Images/Tri-pilot/2.png");
+	animation[0] = LoadGraph("Resource/Images/BoxEnemy/1.png");
+	animation[1] = LoadGraph("Resource/Images/BoxEnemy/2.png");
 
 	//エラーチェック
 	if (animation[0] == -1 || animation[1] == -1)
 	{
-		throw("トリパイロットの画像がありません\n");
+		throw("ハコテキの画像がありません\n");
 	}
 
 	//向きの設定
@@ -36,10 +35,11 @@ void Player::Initialize()
 
 	//初期画像の設定
 	image = animation[0];
+
 }
 
 //更新処理
-void Player::Update()
+void Enemy::Update()
 {
 	//移動処理
 	Movement();
@@ -48,11 +48,12 @@ void Player::Update()
 }
 
 //描画処理
-void Player::Draw() const
+void Enemy::Draw() const
 {
-	//プレイヤー画像の描画
-	DrawRotaGraphF(location.x, location.y, 1.0, radian, image, TRUE, filp_flag);
 	
+	//プレイヤー画像の描画
+	DrawRotaGraphF(location.x, location.y, 0.5, radian, image, TRUE, filp_flag);
+
 	//デバッグ用
 #if _DEBUG
 	//当たり判定の可視化
@@ -65,7 +66,7 @@ void Player::Draw() const
 }
 
 //終了時処理
-void Player::Finalize()
+void Enemy::Finalize()
 {
 	//使用した画像を解放する
 	DeleteGraph(animation[0]);
@@ -73,39 +74,26 @@ void Player::Finalize()
 }
 
 //当たり判定通知処理
-void Player::OnHitCollision(GameObject* hit_object)
+void Enemy::OnHitCollision(GameObject* hit_object)
 {
 	//当たった時の処理
+	
 }
 
 //移動処理
-void Player::Movement()
+void Enemy::Movement()
 {
 	//移動の速さ
 	Vector2D velocity = 0.0f;
 
-	//左右移動
-	if (InputControl::GetKey(KEY_INPUT_LEFT))
-	{
-		velocity.x = -1.0f;
-		filp_flag = TRUE;
-	}
-	else if (InputControl::GetKey(KEY_INPUT_RIGHT))
-	{
-		velocity.x += 1.0f;
-		filp_flag = FALSE;
-	}
-	else
-	{
-		velocity.x += 0.0f;
-	}
+	velocity.x = 1.0f;
 
 	//現在位置座標に速さを加算する
 	location += velocity;
 }
 
 //アニメーション制御
-void Player::AnimeControl()
+void Enemy::AnimeControl()
 {
 	//フレームカウントを加算する
 	animation_count++;

@@ -2,9 +2,9 @@
 #include "DxLib.h"
 
 //コントラクタ
-GameObject::GameObject() : location(0.0f), scale(0.0), radian(0.0), image(0), sound(0)
+GameObject::GameObject() : location(0.0f), scale(0.0), radian(0.0), image(NULL), sound(NULL)
 {
-	
+
 }
 
 //デストラクタ
@@ -54,3 +54,5 @@ void GameObject::SetLocation(const Vector2D& location)
 {
 	this->location = location;
 }
+
+

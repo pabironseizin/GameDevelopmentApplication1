@@ -51,8 +51,8 @@ void Player::Update()
 void Player::Draw() const
 {
 	//プレイヤー画像の描画
-	DrawRotaGraphF(location.x, location.y, 1.0, radian, image, TRUE, filp_flag);
-	
+	DrawRotaGraphF(location.x, location.y, 0.5, radian, image, TRUE, filp_flag);
+
 	//デバッグ用
 #if _DEBUG
 	//当たり判定の可視化
