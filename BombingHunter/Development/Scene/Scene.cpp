@@ -1,6 +1,9 @@
 #include "Scene.h"
 
 #include "../Objects/Enemy/Enemy.h"
+#include "../Objects/Enemy/Enemy2.h"
+#include "../Objects/Enemy/Enemy3.h"
+#include "../Objects/Enemy/Enemy4.h"
 #include "../Objects/Player/Player.h"
 
 //コントラクタ
@@ -23,6 +26,9 @@ void Scene::Initialize()
 	CreateObject<Player>(Vector2D(60.0f, 70.0f));
 	//敵を生成する
 	CreateObject<Enemy>(Vector2D(-10.0f, 400.0f));
+	CreateObject<Enemy2>(Vector2D(-10.0f, 320.0f));
+	CreateObject<Enemy3>(Vector2D(-10.0f, 260.0f));
+	CreateObject<Enemy4>(Vector2D(-10.0f, 180.0f));
 }
 
 //更新処理

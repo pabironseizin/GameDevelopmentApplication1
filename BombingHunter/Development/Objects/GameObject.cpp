@@ -4,7 +4,7 @@
 //コントラクタ
 GameObject::GameObject() : location(0.0f), scale(0.0), radian(0.0), image(NULL), sound(NULL)
 {
-
+	
 }
 
 //デストラクタ

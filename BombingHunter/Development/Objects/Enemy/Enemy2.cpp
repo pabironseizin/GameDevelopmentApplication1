@@ -1,45 +1,45 @@
-#include "Player.h"
-#include "../../Utility/InputControl.h"
+#include "Enemy2.h"
 #include "DxLib.h"
 
 //コントラクタ
-Player::Player() : animation_count(0), filp_flag(FALSE)
+Enemy2::Enemy2() : animation_count(0), filp_flag(FALSE)
 {
 	animation[0] = NULL;
 	animation[1] = NULL;
 }
 
 //デストラクタ
-Player::~Player()
+Enemy2::~Enemy2()
 {
 
 }
 
 //初期化処理
-void Player::Initialize()
+void Enemy2::Initialize()
 {
 	//画像の読み込み
-	animation[0] = LoadGraph("Resource/Images/Tri-pilot/1.png");
-	animation[1] = LoadGraph("Resource/Images/Tri-pilot/2.png");
+	animation[0] = LoadGraph("Resource/Images/WingEnemy/1.png");
+	animation[1] = LoadGraph("Resource/Images/WingEnemy/2.png");
 
 	//エラーチェック
 	if (animation[0] == -1 || animation[1] == -1)
 	{
-		throw("トリパイロットの画像がありません\n");
+		throw("ハネテキの画像がありません\n");
 	}
 
 	//向きの設定
 	radian = 0.0;
 
 	//大きさの設定
-	box_size = 64.0;
+	scale = 64.0;
 
 	//初期画像の設定
 	image = animation[0];
+
 }
 
 //更新処理
-void Player::Update()
+void Enemy2::Update()
 {
 	//移動処理
 	Movement();
@@ -48,16 +48,17 @@ void Player::Update()
 }
 
 //描画処理
-void Player::Draw() const
+void Enemy2::Draw() const
 {
+
 	//プレイヤー画像の描画
-	DrawRotaGraphF(location.x, location.y, 1.0, radian, image, TRUE, filp_flag);
-	
+	DrawRotaGraphF(location.x, location.y, 0.5, radian, image, TRUE, filp_flag);
+
 	//デバッグ用
 #if _DEBUG
 	//当たり判定の可視化
-	Vector2D box_collision_upper_left = location - (box_size / 2.0f);
-	Vector2D box_collision_lower_right = location + (box_size / 2.0f);
+	Vector2D box_collision_upper_left = location - (Vector2D(1.0f) * (float)scale / 2.0f);
+	Vector2D box_collision_lower_right = location + (Vector2D(1.0f) * (float)scale / 2.0f);
 
 	DrawBoxAA(box_collision_upper_left.x, box_collision_upper_left.y, box_collision_lower_right.x, box_collision_lower_right.y, GetColor(255, 0, 0), FALSE);
 
@@ -65,7 +66,7 @@ void Player::Draw() const
 }
 
 //終了時処理
-void Player::Finalize()
+void Enemy2::Finalize()
 {
 	//使用した画像を解放する
 	DeleteGraph(animation[0]);
@@ -73,39 +74,26 @@ void Player::Finalize()
 }
 
 //当たり判定通知処理
-void Player::OnHitCollision(GameObject* hit_object)
+void Enemy2::OnHitCollision(GameObject* hit_object)
 {
 	//当たった時の処理
+
 }
 
 //移動処理
-void Player::Movement()
+void Enemy2::Movement()
 {
 	//移動の速さ
 	Vector2D velocity = 0.0f;
 
-	//左右移動
-	if (InputControl::GetKey(KEY_INPUT_LEFT))
-	{
-		velocity.x = -1.0f;
-		filp_flag = TRUE;
-	}
-	else if (InputControl::GetKey(KEY_INPUT_RIGHT))
-	{
-		velocity.x += 1.0f;
-		filp_flag = FALSE;
-	}
-	else
-	{
-		velocity.x += 0.0f;
-	}
+	velocity.x = 1.0f;
 
 	//現在位置座標に速さを加算する
 	location += velocity;
 }
 
 //アニメーション制御
-void Player::AnimeControl()
+void Enemy2::AnimeControl()
 {
 	//フレームカウントを加算する
 	animation_count++;
@@ -127,3 +115,4 @@ void Player::AnimeControl()
 		}
 	}
 }
+
