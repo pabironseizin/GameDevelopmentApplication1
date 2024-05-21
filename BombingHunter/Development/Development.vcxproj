@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AppMain.cpp" />
+    <ClCompile Include="Objects\UI\High_Score.cpp" />
     <ClCompile Include="Objects\Enemy\Enemy4.cpp" />
     <ClCompile Include="Objects\Enemy\Enemy3.cpp" />
     <ClCompile Include="Objects\Enemy\Enemy2.cpp" />
@@ -139,11 +140,14 @@
     <ClCompile Include="Objects\Enemy\Enemy.cpp" />
     <ClCompile Include="Objects\Player\Player.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
-    <ClCompile Include="Objects\UI.cpp" />
+    <ClCompile Include="Objects\UI\BG.cpp" />
+    <ClCompile Include="Objects\UI\Time.cpp" />
+    <ClCompile Include="Objects\UI\Score.cpp" />
     <ClCompile Include="Utility\InputControl.cpp" />
     <ClCompile Include="Utility\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\UI\High_Score.h" />
     <ClInclude Include="Objects\Enemy\Enemy4.h" />
     <ClInclude Include="Objects\Enemy\Enemy3.h" />
     <ClInclude Include="Objects\Enemy\Enemy2.h" />
@@ -151,7 +155,9 @@
     <ClInclude Include="Objects\Enemy\Enemy.h" />
     <ClInclude Include="Objects\Player\Player.h" />
     <ClInclude Include="Scene\Scene.h" />
-    <ClInclude Include="Objects\UI.h" />
+    <ClInclude Include="Objects\UI\BG.h" />
+    <ClInclude Include="Objects\UI\Time.h" />
+    <ClInclude Include="Objects\UI\Score.h" />
     <ClInclude Include="Utility\InputControl.h" />
     <ClInclude Include="Utility\Vector2D.h" />
   </ItemGroup>

@@ -5,6 +5,10 @@
 #include "../Objects/Enemy/Enemy3.h"
 #include "../Objects/Enemy/Enemy4.h"
 #include "../Objects/Player/Player.h"
+#include "../Objects/UI/BG.h"
+#include "../Objects/UI/Time.h"
+#include "../Objects/UI/Score.h"
+#include "../Objects/UI/High_Score.h"
 
 //コントラクタ
 Scene::Scene() : objects()
@@ -22,13 +26,20 @@ Scene::~Scene()
 //初期化処理
 void Scene::Initialize()
 {
+	//画像の描画
+	CreateObject<BG>(Vector2D(320.0f, 240.0f));
+	CreateObject<Time>(Vector2D(20.0f, 460.0f));
+	CreateObject<Score>(Vector2D(150.0f, 460.0f));
+	CreateObject<High_Score>(Vector2D(360.0f, 460.0f));
 	//プレイヤーを生成する
-	CreateObject<Player>(Vector2D(60.0f, 70.0f));
+	CreateObject<Player>(Vector2D(50.0f, 50.0f));
 	//敵を生成する
 	CreateObject<Enemy>(Vector2D(-10.0f, 400.0f));
 	CreateObject<Enemy2>(Vector2D(-10.0f, 320.0f));
 	CreateObject<Enemy3>(Vector2D(-10.0f, 260.0f));
 	CreateObject<Enemy4>(Vector2D(-10.0f, 180.0f));
+
+	
 }
 
 //更新処理
