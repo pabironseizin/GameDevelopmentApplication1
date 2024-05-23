@@ -1,5 +1,5 @@
 #include "Scene.h"
-
+#include "../Utility/InputControl.h"
 #include "../Objects/Enemy/Enemy.h"
 #include "../Objects/Enemy/Enemy2.h"
 #include "../Objects/Enemy/Enemy3.h"
@@ -9,6 +9,7 @@
 #include "../Objects/UI/Time.h"
 #include "../Objects/UI/Score.h"
 #include "../Objects/UI/High_Score.h"
+#include "../Objects/Bonber.h"
 
 //コントラクタ
 Scene::Scene() : objects()
@@ -32,7 +33,12 @@ void Scene::Initialize()
 	CreateObject<Score>(Vector2D(150.0f, 460.0f));
 	CreateObject<High_Score>(Vector2D(360.0f, 460.0f));
 	//プレイヤーを生成する
-	CreateObject<Player>(Vector2D(50.0f, 50.0f));
+	CreateObject<Player>(Vector2D(320.0f, 50.0f));
+	if (InputControl::GetKeyDown())
+	{
+
+	}
+	CreateObject<Bonber>(Vector2D(320.0f, 50.0f));
 	//敵を生成する
 	CreateObject<Enemy>(Vector2D(-10.0f, 400.0f));
 	CreateObject<Enemy2>(Vector2D(-10.0f, 320.0f));
