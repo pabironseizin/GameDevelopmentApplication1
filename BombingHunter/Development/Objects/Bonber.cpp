@@ -21,6 +21,12 @@ void Bonber::Initialize()
 	}
 
 	radian = 1.5;
+
+	//大きさの設定
+	box_size = 32.0;
+
+	//初期進行方向の設定
+	direction = Vector2D(0.0f, 1.0f);
 }
 
 void Bonber::Update()
@@ -42,7 +48,6 @@ void Bonber::Finalize()
 
 void Bonber::Move()
 {
-	Vector2D velocity = 0.0f;
-
-	velocity.y += 1.0f;
+	//現在位置座標に速さを加算する
+	location += direction;
 }

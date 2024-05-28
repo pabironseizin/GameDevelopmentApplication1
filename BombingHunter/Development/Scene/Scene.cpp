@@ -1,5 +1,7 @@
 #include "Scene.h"
+#include "DxLib.h"
 #include "../Utility/InputControl.h"
+#include "../Objects/GameObject.h"
 #include "../Objects/Enemy/Enemy.h"
 #include "../Objects/Enemy/Enemy2.h"
 #include "../Objects/Enemy/Enemy3.h"
@@ -34,19 +36,15 @@ void Scene::Initialize()
 	CreateObject<High_Score>(Vector2D(360.0f, 460.0f));
 	//プレイヤーを生成する
 	CreateObject<Player>(Vector2D(320.0f, 50.0f));
-	if (InputControl::GetKeyDown())
-	{
-
-	}
-	CreateObject<Bonber>(Vector2D(320.0f, 50.0f));
 	//敵を生成する
-	CreateObject<Enemy>(Vector2D(-10.0f, 400.0f));
-	CreateObject<Enemy2>(Vector2D(-10.0f, 320.0f));
-	CreateObject<Enemy3>(Vector2D(-10.0f, 260.0f));
-	CreateObject<Enemy4>(Vector2D(-10.0f, 180.0f));
+	CreateObject<Enemy>(Vector2D(100.0f, 400.0f));
+	CreateObject<Enemy2>(Vector2D(100.0f, 320.0f));
+	CreateObject<Enemy3>(Vector2D(100.0f, 260.0f));
+	CreateObject<Enemy4>(Vector2D(100.0f, 180.0f));
 
 	
 }
+
 
 //更新処理
 void Scene::Update()
@@ -55,6 +53,11 @@ void Scene::Update()
 	for (GameObject* obj : objects)
 	{
 		obj->Update();
+	}
+
+	if (InputControl::GetKeyDown(KEY_INPUT_SPACE))
+	{
+		CreateObject<Bonber>(Vector2D(320.0f, 50.0f));
 	}
 }
 

@@ -6,6 +6,7 @@ class Bonber : public GameObject
 {
 private:
 	int bonber;
+	Vector2D direction;  //is•ûŒü
 
 public:
 	Bonber();
