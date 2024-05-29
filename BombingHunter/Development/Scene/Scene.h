@@ -7,6 +7,7 @@
 class Scene
 {
 private:
+	int BGM;  //BGM
 	std::vector<GameObject*> objects;
 
 public:

@@ -1,4 +1,5 @@
 #include "Bonber.h"
+#include "../Utility/InputControl.h"
 #include "DxLib.h"
 
 Bonber::Bonber() : bonber(NULL)
@@ -25,8 +26,24 @@ void Bonber::Initialize()
 	//大きさの設定
 	box_size = 32.0;
 
-	//初期進行方向の設定
-	direction = Vector2D(0.0f, 1.0f);
+	////初期進行方向の設定
+	//direction = Vector2D(0.0f, 1.0f);
+
+	if (InputControl::GetKey(KEY_INPUT_LEFT))
+	{
+		radian = 1.0;
+		direction = Vector2D(0.0f, 0.5f);
+	}
+	else if (InputControl::GetKey(KEY_INPUT_RIGHT))
+	{
+		radian = 0.5;
+		direction = Vector2D(0.0f, 1.5f);
+	}
+	else
+	{
+		radian = 1.5;
+		direction = Vector2D(0.0f, 1.0f);
+	}
 }
 
 void Bonber::Update()

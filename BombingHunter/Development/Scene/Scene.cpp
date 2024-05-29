@@ -14,7 +14,8 @@
 #include "../Objects/Bonber.h"
 
 //コントラクタ
-Scene::Scene() : objects()
+Scene::Scene() : objects(),BGM(NULL)
+
 {
 
 }
@@ -29,6 +30,8 @@ Scene::~Scene()
 //初期化処理
 void Scene::Initialize()
 {
+	BGM = LoadSoundMem("Resource/sounds/Evaluation/BGM_arrows.wav");
+
 	//画像の描画
 	CreateObject<BG>(Vector2D(320.0f, 240.0f));
 	CreateObject<Time>(Vector2D(20.0f, 460.0f));
@@ -49,6 +52,9 @@ void Scene::Initialize()
 //更新処理
 void Scene::Update()
 {
+	//BGM再生
+	PlaySoundMem(BGM, DX_PLAYTYPE_LOOP, FALSE);
+
 	//シーンに存在するオブジェクトの更新処理
 	for (GameObject* obj : objects)
 	{
@@ -57,7 +63,7 @@ void Scene::Update()
 
 	if (InputControl::GetKeyDown(KEY_INPUT_SPACE))
 	{
-		CreateObject<Bonber>(Vector2D(320.0f, 50.0f));
+		CreateObject<Bonber>(objects[4]->GetLocation());
 	}
 }
 

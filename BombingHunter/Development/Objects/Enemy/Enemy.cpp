@@ -31,7 +31,7 @@ void Enemy::Initialize()
 	radian = 0.0;
 
 	//‘å‚«‚³‚Ìİ’è
-	box_size = 25.0;
+	box_size = 64.0;
 
 	//‰Šú‰æ‘œ‚Ìİ’è
 	image = animation[0];
