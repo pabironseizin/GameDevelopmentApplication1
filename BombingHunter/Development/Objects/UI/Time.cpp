@@ -1,7 +1,7 @@
 #include "Time.h"
 #include "DxLib.h"
 
-Time::Time() : time(NULL)
+Time::Time() : time(NULL),start_time()
 {
 
 }
@@ -13,6 +13,8 @@ Time::~Time()
 
 void Time::Initialize()
 {
+	start_time = 60;
+
 	time = LoadGraph("Resource/Images/TimeLimit/timer-03.png");
 	
 	if (time == -1)

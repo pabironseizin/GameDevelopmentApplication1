@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AppMain.cpp" />
+    <ClCompile Include="Objects\Bullet.cpp" />
     <ClCompile Include="Objects\Bonber.cpp" />
     <ClCompile Include="Objects\UI\High_Score.cpp" />
     <ClCompile Include="Objects\Enemy\Enemy4.cpp" />
@@ -148,6 +149,7 @@
     <ClCompile Include="Utility\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\Bullet.h" />
     <ClInclude Include="Objects\Bonber.h" />
     <ClInclude Include="Objects\UI\High_Score.h" />
     <ClInclude Include="Objects\Enemy\Enemy4.h" />

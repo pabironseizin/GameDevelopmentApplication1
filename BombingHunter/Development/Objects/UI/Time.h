@@ -6,6 +6,7 @@ class Time : public GameObject
 {
 private:
 	int time;  //ŠÔ
+	int start_time;
 	
 public:
 	Time();

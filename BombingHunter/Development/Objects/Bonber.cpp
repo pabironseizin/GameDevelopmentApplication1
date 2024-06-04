@@ -29,15 +29,15 @@ void Bonber::Initialize()
 	////èâä˙êiçsï˚å¸ÇÃê›íË
 	//direction = Vector2D(0.0f, 1.0f);
 
-	if (InputControl::GetKey(KEY_INPUT_LEFT))
+	if (InputControl::GetKey(KEY_INPUT_LEFT) || InputControl::GetKeyDown(KEY_INPUT_LEFT))
+	{
+		radian = 2.0;
+		direction = Vector2D(-1.5f, 1.0f);
+	}
+	else if (InputControl::GetKey(KEY_INPUT_RIGHT)|| InputControl::GetKeyDown(KEY_INPUT_RIGHT))
 	{
 		radian = 1.0;
-		direction = Vector2D(0.0f, 0.5f);
-	}
-	else if (InputControl::GetKey(KEY_INPUT_RIGHT))
-	{
-		radian = 0.5;
-		direction = Vector2D(0.0f, 1.5f);
+		direction = Vector2D(1.5f, 1.0f);
 	}
 	else
 	{

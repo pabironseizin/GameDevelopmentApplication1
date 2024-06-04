@@ -73,18 +73,16 @@ void Enemy4::Draw() const
 	//プレイヤー画像の描画
 	DrawRotaGraphF(location.x, location.y, 0.5, radian, image, TRUE, flip_flag);
 
-	// 親クラスの描画処理を呼び出す
-	__super::Draw();
-
-	//	//デバッグ用
-	//#if _DEBUG
-	//	//当たり判定の可視化
-	//	Vector2D box_collision_upper_left = location - (Vector2D(1.0f) * box_size / 2.0f);
-	//	Vector2D box_collision_lower_right = location + (Vector2D(1.0f) * box_size / 2.0f);
-	//
-	//	DrawBoxAA(box_collision_upper_left.x, box_collision_upper_left.y, box_collision_lower_right.x, box_collision_lower_right.y, GetColor(255, 0, 0), FALSE);
-	//
-	//#endif
+	
+		//デバッグ用
+	#if _DEBUG
+		//当たり判定の可視化
+		Vector2D box_collision_upper_left = location - (Vector2D(1.0f) * box_size / 2.0f);
+		Vector2D box_collision_lower_right = location + (Vector2D(1.0f) * box_size / 2.0f);
+	
+		DrawBoxAA(box_collision_upper_left.x, box_collision_upper_left.y, box_collision_lower_right.x, box_collision_lower_right.y, GetColor(255, 0, 0), FALSE);
+	
+	#endif
 }
 
 //終了時処理

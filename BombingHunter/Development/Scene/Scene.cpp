@@ -12,6 +12,7 @@
 #include "../Objects/UI/Score.h"
 #include "../Objects/UI/High_Score.h"
 #include "../Objects/Bonber.h"
+#include "../Objects/Bullet.h"
 
 //コントラクタ
 Scene::Scene() : objects(),BGM(NULL)
@@ -64,6 +65,11 @@ void Scene::Update()
 	if (InputControl::GetKeyDown(KEY_INPUT_SPACE))
 	{
 		CreateObject<Bonber>(objects[4]->GetLocation());
+	}
+
+	if (InputControl::GetKeyDown(KEY_INPUT_Z))
+	{
+		CreateObject<Bullet>(objects[5]->GetLocation());
 	}
 }
 
