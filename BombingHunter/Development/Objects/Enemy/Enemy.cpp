@@ -76,6 +76,9 @@ void Enemy::Draw() const
 	//プレイヤー画像の描画
 	DrawRotaGraphF(location.x, location.y, 0.5, radian, image, TRUE, flip_flag);
 
+	////親クラスの描画処理を呼び出す
+	//__super::Draw();
+
 	//デバッグ用
 #if _DEBUG
 	//当たり判定の可視化
@@ -87,19 +90,19 @@ void Enemy::Draw() const
 #endif
 }
 
+////当たり判定通知処理
+//void Enemy::OnHitCollision(GameObject* hit_object)
+//{
+//	//当たった時の処理
+//	direction = 0.0f;
+//}
+
 //終了時処理
 void Enemy::Finalize()
 {
 	//使用した画像を解放する
 	DeleteGraph(animation[0]);
 	DeleteGraph(animation[1]);
-}
-
-//当たり判定通知処理
-void Enemy::OnHitCollision(GameObject* hit_object)
-{
-	//当たった時の処理
-	
 }
 
 //移動処理

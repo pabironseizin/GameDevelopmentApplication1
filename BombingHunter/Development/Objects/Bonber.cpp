@@ -2,7 +2,7 @@
 #include "../Utility/InputControl.h"
 #include "DxLib.h"
 
-Bonber::Bonber() : bonber(NULL)
+Bonber::Bonber() : bonber(NULL), direction(0.0f)
 {
 
 }
@@ -23,9 +23,9 @@ void Bonber::Initialize()
 
 	radian = 1.5;
 
-	//大きさの設定
-	box_size = 32.0;
+	box_size = 32.0f;
 
+	
 	////初期進行方向の設定
 	//direction = Vector2D(0.0f, 1.0f);
 
@@ -55,13 +55,24 @@ void Bonber::Draw() const
 {
 	DrawRotaGraphF(location.x, location.y, 0.5, radian, bonber, TRUE);
 
+	////親クラスの描画処理を呼び出す
+	//__super::Draw();
 }
+
+////当たり判定通知処理
+//void Bonber::OnHitCollision(GameObject* hit_object)
+//{
+//	//当たった時の処理
+//	direction = 0.0f;
+//}
 
 void Bonber::Finalize()
 {
 	DeleteGraph(bonber);
 
 }
+
+
 
 void Bonber::Move()
 {

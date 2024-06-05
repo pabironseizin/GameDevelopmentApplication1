@@ -72,6 +72,13 @@ void Enemy::Draw() const
 	__super::Draw();
 }
 
+//“–‚½‚è”»’è’Ê’mˆ—
+void Enemy::OnHitCollision(GameObject* hit_object)
+{
+	//“–‚½‚Á‚½‚Ìˆ—
+	direction = 0.0f;
+}
+
 //I—¹ˆ—
 void Enemy::Finalize()
 {
@@ -80,12 +87,6 @@ void Enemy::Finalize()
 	DeleteGraph(animation[1]);
 }
 
-//“–‚½‚è”»’è’Ê’mˆ—
-void Enemy::OnHitCollision(GameObject* hit_object)
-{
-	//“–‚½‚Á‚½‚Ìˆ—
-	direction = 0.0f;
-}
 
 //ˆÚ“®ˆ—
 void Enemy::Movement()
